@@ -154,7 +154,7 @@ describe OracleOfBacon do
     it { is_expected.to match /b=George\+Clooney/ }
     it { is_expected.to match /a=3%252\+%22a/ }
   end
-  describe 'service connection', :pending => true do
+  describe 'service connection' do
     before(:each) do
       @oob = OracleOfBacon.new
       allow(@oob).to receive(:valid?).and_return(true)
