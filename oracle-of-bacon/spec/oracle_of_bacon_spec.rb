@@ -5,8 +5,8 @@ require 'debugger'
 
 describe OracleOfBacon do
   before(:all) { FakeWeb.allow_net_connect = false }
-  describe 'instance', :pending => true do
-    before(:each) { @orb = OracleOfBacon.new('fake_api_key') }
+  describe 'instance' do
+    before(:each) { @orb = OracleOfBacon.new('38b99ce9ec87') }
     describe 'when new' do
       subject { @orb }
       it { is_expected.not_to be_valid }
@@ -174,4 +174,3 @@ describe OracleOfBacon do
   end
 
 end
-      
