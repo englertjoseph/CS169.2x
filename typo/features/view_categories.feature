@@ -6,8 +6,15 @@ Feature: View Categories
   Background:
     Given the blog is set up
     And I am logged into the admin panel
+    And I am on the admin categories page
 
   Scenario: View categories
-    Given I am on the admin categories page
     Then I should see "Categories"
     Then I should not see "ActiveRecord::RecordNotFound"
+
+  Scenario: Edit a category
+    Given there only exists a category "General"
+    And I am on the edit page for "General"
+    When I change the name to "#General"
+    When I press "Save"
+    Then I should see "#General"
