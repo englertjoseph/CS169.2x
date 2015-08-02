@@ -18,3 +18,10 @@ Feature: View Categories
     When I change the name to "#General"
     When I press "Save"
     Then I should see "#General"
+
+  Scenario: Create a category
+    Given there are no categories
+    When I fill in "Name" with "Category 1"
+    When I press "Save"
+    Then I should see "Category 1"
+    And I should see "Category was successfully saved."

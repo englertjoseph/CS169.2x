@@ -31,6 +31,10 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Given /^there are no categories$/ do
+  Category.destroy_all
+end
+
 Given /^there only exists a category "(.*?)"$/ do |arg1|
   Category.destroy_all
   Category.create(name: "General", permalink: "general")
