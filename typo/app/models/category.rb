@@ -78,10 +78,9 @@ class Category < ActiveRecord::Base
   before_save :set_permalink
 
   def set_permalink
-    self.permalink = self.name.to_permalink if self.permalink.nil? or self.permalink.empty?
+    self.permalink = self.name if self.permalink.nil? or self.permalink.empty?
   end
 
   validates_presence_of :name
   validates_uniqueness_of :name, :on => :create
 end
-
