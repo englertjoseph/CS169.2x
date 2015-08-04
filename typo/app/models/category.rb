@@ -78,7 +78,7 @@ class Category < ActiveRecord::Base
   before_save :set_permalink
 
   def set_permalink
-    self.permalink = self.name if self.permalink.nil? or self.permalink.empty?
+    self.permalink = self.name.gsub(' ', '-') if self.permalink.nil? or self.permalink.empty?
   end
 
   validates_presence_of :name
