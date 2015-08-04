@@ -52,6 +52,10 @@ Given /^the blog is set up$/ do
                 :state => 'active'})
 end
 
+Given /^I am logged out$/ do
+  visit path_to "log out"
+end
+
 And /^I am logged into the admin panel$/ do
   visit '/accounts/login'
   fill_in 'user_login', :with => 'admin'
