@@ -80,6 +80,13 @@ class Article < Content
     Article.exists?({:parent_id => self.id})
   end
 
+  def merge_with(other_article_id)
+    other_article = Article.find(other_article_id)
+    self.body = "#{self.body} #{other_article.body}"
+    other_article.comments.each { |comment| self.comments << comment }
+    save
+  end
+
   attr_accessor :draft, :keywords
 
   has_state(:state,
@@ -104,10 +111,10 @@ class Article < Content
     end
 
     def search_with_pagination(search_hash, paginate_hash)
-      
+
       state = (search_hash[:state] and ["no_draft", "drafts", "published", "withdrawn", "pending"].include? search_hash[:state]) ? search_hash[:state] : 'no_draft'
-      
-      
+
+
       list_function  = ["Article.#{state}"] + function_search_no_draft(search_hash)
 
       if search_hash[:category] and search_hash[:category].to_i > 0

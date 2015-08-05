@@ -3,7 +3,7 @@ Given /^the following articles exist$/ do |table|
   Article.create(table.hashes)
 end
 
-Then /^the article "(.*?)" should have body "(.*?)"$/ do |arg1, arg2|
+Then /^the article "(.*?)" should have body "(.*?)"$/ do |title, body|
   Article.find_by_title(title).body.should eq body
 end
 
@@ -20,7 +20,7 @@ end
 Then /^the article "(.*?)" should include comments from "(.*?)"$/ do |arg1, arg2|
   merged_article = Article.find_by_title(arg1)
   article = Article.find_by_title(arg2)
-  assert (merged_article & article) == merged_article
+  assert (merged_article.comments & article.comments) == merged_article.comments
 end
 
 Then /^the tile of "(.*?)" should be either "(.*?)" or "(.*?)"$/ do |arg1, arg2, arg3|

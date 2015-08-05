@@ -7,10 +7,10 @@ Feature: Merge articles
     And I am logged into the admin panel
     And the following articles exist
     | id | title    | body           | author |
-    | 2  | Foobar   | LoremIpsum     | alice  |
-    | 3  | Foobar 2 | LoremIpsum  2  | bob    |
+    | 3  | Foobar   | LoremIpsum     | alice  |
+    | 4  | Foobar 2 | LoremIpsum  2  | bob    |
     Given I am on the article page for "Foobar"
-    And I fill in "merge_with" with "3"
+    And I fill in "merge_with" with "4"
     And I press "Merge"
 
   Scenario: Non-admin cannot merge articles

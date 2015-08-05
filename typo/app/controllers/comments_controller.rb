@@ -20,7 +20,7 @@ class CommentsController < FeedbackController
       partial = '/articles/comment'
     end
     if request.xhr?
-      render :partial => partial, :object => @comment 
+      render :partial => partial, :object => @comment
     else
       redirect_to @article.permalink_url
     end
