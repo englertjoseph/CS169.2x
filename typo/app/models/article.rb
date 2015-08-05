@@ -81,10 +81,16 @@ class Article < Content
   end
 
   def merge_with(other_article_id)
-    other_article = Article.find(other_article_id)
+    return "Cannot merge the same article" if self.id == other_article_id.to_i
+    begin
+      other_article = Article.find(other_article_id)
+    rescue ActiveRecord::RecordNotFound => e
+      return "Cannot merge as article with ID = #{other_article_id} does not exist"
+    end
     self.body = "#{self.body} #{other_article.body}"
     other_article.comments.each { |comment| self.comments << comment }
     save
+    "Articles successfully merged!"
   end
 
   attr_accessor :draft, :keywords

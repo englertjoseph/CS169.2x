@@ -116,8 +116,8 @@ class Admin::ContentController < Admin::BaseController
 
   def merge
     current_article = Article.find(params[:id])
-    current_article.merge_with(params[:merge_with])
-    redirect_to admin_dashboard_path
+    flash[:notice] = current_article.merge_with(params[:merge_with])
+    redirect_to admin_content_path
   end
 
 
